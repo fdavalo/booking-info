@@ -37,7 +37,7 @@ spec:
         image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/mysql
         imagePullPolicy: IfNotPresent
         env:
-  {{ if eq .Values.details.v2.db "mysql" }}
+  {{ if eq .Values.ratings.v2.db "mysql" }}
           # ratings-v2 will use mongodb as the default db backend.
           # if you would like to use mysqldb then set DB_TYPE = 'mysql', set
           # the rest of the parameters shown here and also create the
@@ -53,7 +53,7 @@ spec:
           # - name: MYSQL_DB_PASSWORD
           #  value: password
   {{ end }} 
-  {{ if eq .Values.details.v2.db "mongodb" }}
+  {{ if eq .Values.ratings.v2.db "mongodb" }}
           - name: MONGO_DB_URL
             value: mongodb://mongodb:27017/test
   {{ end }}
