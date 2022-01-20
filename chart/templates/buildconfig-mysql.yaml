@@ -1,0 +1,27 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: mysql
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'mysql:latest'
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'mysql:latest'
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/fdavalo/booking-info.git'
+      ref: main
+    contextDir: src/mysql
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
