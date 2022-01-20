@@ -20,10 +20,7 @@ spec:
       serviceAccountName: bookinfo-ratings
       containers:
       - name: ratings
-        image: docker.io/istio/examples-bookinfo-ratings-v1:1.16.2
+        image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/mysql
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
-        securityContext:
-          runAsUser: 1000
-
