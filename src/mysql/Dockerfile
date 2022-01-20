@@ -11,9 +11,14 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-
 FROM mysql:8.0.20
 # MYSQL_ROOT_PASSWORD must be supplied as an env var
 
-RUN mkdir -p /docker-entrypoint-initdb.d
-COPY ./mysqldb-init.sql /docker-entrypoint-initdb.d
+COPY ./mysqldb-init.sql /opt/app-root/src
+COPY ./mysqldb-check.sql /opt/app-root/src
+COPY ./mysqldb-init.sh /opt/app-root/src
+
+
+
+
+
