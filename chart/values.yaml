@@ -1,5 +1,5 @@
 
-details:
+ratings:
     v2:
         # none, mongodb or mysql
         db: mongodb
