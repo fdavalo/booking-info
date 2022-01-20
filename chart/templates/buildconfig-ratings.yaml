@@ -1,13 +1,13 @@
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: ratings
+  name: ratings-v1
 spec:
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: 'ratings:latest'
+      name: 'ratings:v1'
   strategy:
     type: Docker
     dockerStrategy:
@@ -15,6 +15,9 @@ spec:
         kind: ImageStreamTag
         namespace: openshift
         name: 'nodejs:latest'
+      buildArgs:
+        - name: service_version
+          value: '-v1'        
   source:
     type: Git
     git:
