@@ -34,7 +34,7 @@ spec:
       serviceAccountName: bookinfo-ratings-v2
       containers:
       - name: ratings
-        image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/mysql
+        image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/ratings:v2
         imagePullPolicy: IfNotPresent
         env:
   {{ if eq .Values.ratings.v2.db "mysql" }}
