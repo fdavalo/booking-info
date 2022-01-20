@@ -14,14 +14,9 @@
 
 FROM node:12.18.1-slim
 
-COPY package.json /opt/app-root/src/
-COPY ratings.js /opt/app-root/src/
+COPY package.json .
+COPY ratings.js .
 RUN npm install
-
-#hadolint ignore=DL3008
-RUN apt-get update \
-    && apt-get install curl --no-install-recommends -y \
-    && rm -rf /var/lib/apt/lists/*
 
 ARG service_version
 ENV SERVICE_VERSION ${service_version:-v1}
