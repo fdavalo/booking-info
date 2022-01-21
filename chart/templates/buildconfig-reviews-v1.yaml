@@ -1,0 +1,30 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: reviews-v1
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'reviews:v1'
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'nodejs:latest'
+      buildArgs:
+        - name: service_version
+          value: '-v1'        
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/fdavalo/booking-info.git'
+      ref: main
+    contextDir: src/reviews
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
