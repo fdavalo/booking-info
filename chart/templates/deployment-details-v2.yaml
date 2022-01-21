@@ -36,13 +36,10 @@ spec:
     spec:
       containers:
       - name: details
-        image: docker.io/istio/examples-bookinfo-details-v2:1.16.2
+        image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/details:v2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
         env:
         - name: DO_NOT_ENCRYPT
           value: "true"
-        securityContext:
-          runAsUser: 1000
----
