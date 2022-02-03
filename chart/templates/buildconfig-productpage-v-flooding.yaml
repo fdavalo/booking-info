@@ -1,0 +1,30 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: productpage-v-flooding
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'productpage:v-flooding'
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'python:latest'
+      buildArgs:
+        - name: flood_factor
+          value: 100  
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/fdavalo/booking-info.git'
+      ref: main
+    contextDir: src/productpage
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
