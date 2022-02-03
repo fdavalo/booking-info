@@ -1,7 +1,7 @@
 FROM image-registry.openshift-image-registry.svc:5000/openshift/ubi8-openjdk-11:1.3
 RUN mkdir -p /opt/gradle
 WORKDIR /opt/gradle
-RUN curl -o gradle.zip https://services.gradle.org/distributions/gradle-7.3.3-bin.zip
+RUN curl -L -o gradle.zip https://services.gradle.org/distributions/gradle-7.3.3-bin.zip
 RUN unzip -d gradle.zip
 RUN mkdir -p /app/src
 COPY . /app/src
