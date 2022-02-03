@@ -11,10 +11,7 @@ spec:
   strategy:
     type: Docker
     dockerStrategy:
-      from:
-        kind: ImageStreamTag
-        namespace: openshift
-        name: 'nodejs:latest'
+      dockerfilePath: Dockerfile
       buildArgs:
         - name: service_version
           value: '-v1'        
