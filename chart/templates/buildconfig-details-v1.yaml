@@ -14,7 +14,7 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'nodejs:latest'
+        name: 'ruby:latest'
       buildArgs:
         - name: service_version
           value: 'v1'        
