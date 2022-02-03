@@ -17,7 +17,7 @@ spec:
         name: 'nodejs:latest'
       buildArgs:
         - name: service_version
-          value: '-v2'        
+          value: 'v2'        
   source:
     type: Git
     git:
