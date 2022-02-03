@@ -3,10 +3,10 @@ RUN mkdir -p /opt/gradle
 WORKDIR /opt/gradle
 RUN curl -L -o gradle.zip https://services.gradle.org/distributions/gradle-7.3.3-bin.zip
 RUN unzip gradle.zip
-RUN mkdir -p /app/src
-COPY . /app/src
+RUN mkdir -p /opt/app/src
+COPY . /opt/app/src
 ENV PATH=$PATH:/opt/gradle/gradle-7.3.3/bin
-RUN cd /app/src && gradle build
+RUN cd /opt/app/src && gradle build
 
 FROM java:latest
-COPY --from=0  /app/src/reviews-application/build/libs/reviews-application-1.0.war./ /tmp/deployments
+COPY --from=0  /opt/app/src/reviews-application/build/libs/reviews-application-1.0.war./ /tmp/deployments
