@@ -17,7 +17,7 @@ spec:
         name: 'python:latest'
       buildArgs:
         - name: flood_factor
-          value: 100  
+          value: '100'        
   source:
     type: Git
     git:
