@@ -1,4 +1,4 @@
-FROM ubi8:latest
+FROM image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/ubi8:latest
 RUN mkdir -p /opt/gradle
 WORKDIR /opt/gradle
 RUN curl -o gradle.zip https://services.gradle.org/distributions/gradle-7.3.3-bin.zip
