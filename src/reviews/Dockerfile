@@ -9,5 +9,5 @@ COPY --chown=jboss . /opt/app/src
 ENV PATH=$PATH:/opt/gradle/gradle-7.3.3/bin
 RUN cd /opt/app/src && ls -altr * && gradle build
 
-FROM image-registry.openshift-image-registry.svc:5000/openshift/java:openjdk-11-ubi8
-COPY --from=0  /opt/app/src/reviews-application/build/libs/reviews-application-1.0.war /tmp/deployments
+FROM image-registry.openshift-image-registry.svc:5000/openshift/jboss-webserver54-openjdk11-tomcat9-openshift-ubi8:latest
+COPY --from=0  /opt/app/src/reviews-application/build/libs/reviews-application-1.0.war /deployments
