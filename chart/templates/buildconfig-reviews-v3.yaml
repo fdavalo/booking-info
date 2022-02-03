@@ -11,7 +11,12 @@ spec:
   strategy:
     type: Docker
     dockerStrategy:
-      dockerfilePath: Dockerfile     
+      dockerfilePath: Dockerfile  
+      buildArgs:
+        - name: enable_ratings
+          value: 'true'      
+        - name: star_color
+          value: 'red'      
   source:
     type: Git
     git:
