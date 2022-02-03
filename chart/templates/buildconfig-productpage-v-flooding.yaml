@@ -14,7 +14,7 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'python:latest'
+        name: 'python:3.8'
       buildArgs:
         - name: flood_factor
           value: '100'        
