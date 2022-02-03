@@ -5,7 +5,7 @@ RUN curl -L -o gradle.zip https://services.gradle.org/distributions/gradle-7.3.3
 RUN unzip gradle.zip
 RUN mkdir -p /opt/app/src
 RUN id
-COPY --chown=jboss /opt/app/src
+COPY --chown=jboss . /opt/app/src
 ENV PATH=$PATH:/opt/gradle/gradle-7.3.3/bin
 RUN cd /opt/app/src && ls -altr * && gradle build
 
