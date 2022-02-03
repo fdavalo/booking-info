@@ -11,10 +11,7 @@ spec:
   strategy:
     type: Docker
     dockerStrategy:
-      dockerfilePath: Dockerfile
-      buildArgs:
-        - name: service_version
-          value: '-v1'        
+      dockerfilePath: Dockerfile     
   source:
     type: Git
     git:
