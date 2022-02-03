@@ -13,6 +13,8 @@ spec:
     dockerStrategy:
       dockerfilePath: Dockerfile  
       buildArgs:
+        - name: service_version
+          value: 'v3'       
         - name: enable_ratings
           value: 'true'      
         - name: star_color
