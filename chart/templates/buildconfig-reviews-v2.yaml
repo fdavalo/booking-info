@@ -22,7 +22,7 @@ spec:
     git:
       uri: 'https://github.com/fdavalo/booking-info.git'
       ref: main
-    contextDir: src/reviews
+    contextDir: src/reviews/reviews-application
   triggers:
     - type: ImageChange
       imageChange: {}
