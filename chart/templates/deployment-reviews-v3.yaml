@@ -25,6 +25,10 @@ spec:
         env:
         - name: LOG_DIR
           value: "/tmp/logs"
+        - name: ENABLE_RATINGS
+          value: "true"
+        - name: STAR_COLOR
+          value: red          
         ports:
         - containerPort: 9080
         volumeMounts:
