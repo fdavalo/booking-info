@@ -43,3 +43,5 @@ spec:
         env:
         - name: DO_NOT_ENCRYPT
           value: "false"
+        - name: ENABLE_EXTERNAL_BOOK_SERVICE
+          value: "true"
