@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: docker.io/istio/examples-bookinfo-mongodb:1.16.2
+        image: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/mongodb
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 27017
