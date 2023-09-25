@@ -8,5 +8,5 @@ COPY --chown=jboss . /opt/app/src
 ENV PATH=$PATH:/opt/maven/apache-maven-3.9.4/bin
 RUN cd /opt/app/src && mvn package
 
-FROM image-registry.openshift-image-registry.svc:5000/openshift/jboss-webserver54-openjdk11-tomcat9-openshift-ubi8:latest
+FROM image-registry.openshift-image-registry.svc:5000/openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:latest
 COPY --from=0  /opt/app/src/target/reviews.war /deployments/ROOT.war
