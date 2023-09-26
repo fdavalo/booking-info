@@ -45,5 +45,5 @@ spec:
               URL=`oc get route -n istio-system | grep booking-info | awk '{print $2;}'`
               while [[ 1 ]]; do
                 sleep 2
-                curl http://$URL
+                curl http://$URL/productpage
               done  
