@@ -41,7 +41,7 @@ spec:
             - /bin/bash
             - '-c'
       args:
-            - >- 
+            - |
               URL=`oc get route -n istio-system | grep booking-info | awk '{print $2;}'`
               while [[ 1 ]]; do
                 sleep 2
