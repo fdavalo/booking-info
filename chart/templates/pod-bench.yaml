@@ -1,0 +1,49 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: routes-istio-system
+  namespace: istio-system
+rules:
+  - apiGroups:
+      - 'route.openshift.io'
+    resources:
+      - routes
+    verbs:
+      - get
+      - watch
+      - list
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: routes-istio-system
+  namespace: istio-system
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: booking-info
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: routes-istio-system
+---  
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bench
+spec:
+  serviceAccountName: default
+  restartPolicy: OnFailure
+  containers:
+    - name: cli
+      image: 'quay.io/openshift/origin-cli'
+      command:
+            - /bin/bash
+            - '-c'
+      args:
+            - >- 
+              URL=`oc get route -n istio-system | grep booking-info | awk '{print $2;}'`
+              while [[ 1 ]]; then
+                sleep 10
+                curl http://$URL
+              done  
